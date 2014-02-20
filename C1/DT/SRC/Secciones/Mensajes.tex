@@ -1,0 +1,117 @@
+%*******************Errores*******************************
+\section{Mensajes}
+
+\begin{table}[ht]
+   \begin{tabular}{|p{3cm}|p{12cm}|l|}
+     \hline
+     \textbf{MSG1 } &  Informaci\'on incompleta\\ \hline
+     \textbf{Tipo } & Error \\ \hline
+     \textbf{Estatus} & En revisi\'on \\ \hline
+     \textbf{Objetivo } &  Mostrar al usuario que le falta un campo obligatorio por llenar\\ \hline
+     \textbf{Redacci\'on } & Falta llenar el campo NOMBRE\_CAMPO. Es obligatorio\\ \hline
+     \textbf{Par\'ametros } &  NOMBRE\_CAMPO: Nombre del campo que se encuentra vacio. \\ 
+				 \hline
+     \textbf{Ejemplo} & Falta llenar el campo Nombre. Es obligatorio.\\
+     \hline
+   \end{tabular}
+\end{table}
+
+\begin{table}[ht]
+   \begin{tabular}{|p{3cm}|p{12cm}|l|}
+     \hline
+     \textbf{MSG2 } & Resultado vac\'io\\ \hline
+     \textbf{Tipo } & Error \\ \hline
+     \textbf{Estatus} & En revisi\'on \\ \hline
+     \textbf{Objetivo } & Avisar al usuario cuando el resultado de una consulta fu\'e vac\'io\\ \hline
+     \textbf{Redacci\'on } & No se encontraron resultados\\ \hline
+     \textbf{Par\'ametros } & -\\ \hline
+     \textbf{Ejemplo} & No se encontraron resultados.\\
+     \hline
+   \end{tabular}
+\end{table}
+
+%*******************Alertas*******************************
+\begin{table}[ht]
+   \begin{tabular}{|p{3cm}|p{12cm}|l|}
+     \hline
+     \textbf{MSG3 } & Confirmaci\'on\\ \hline
+     \textbf{Tipo } & Alerta \\ \hline
+     \textbf{Estatus} & En revisi\'on \\ \hline
+     \textbf{Objetivo } & Indicar si se aprueba alg\'un suceso a ocurrir\\ \hline
+     \textbf{Redacci\'on } & ?`Seguro que desea ACCI\'ON?\\ \hline
+     \textbf{Par\'ametros } & ACCI\'ON: Breve explicaci\'on de la acci\'on que ocurrir\'a\\ \hline
+     \textbf{Ejemplo} & ?`Seguro que desea calcular la ruta?\\
+     \hline
+   \end{tabular}
+\end{table}
+
+%*******************Mensajes*******************************
+\begin{table}[ht]
+   \begin{tabular}{|p{3cm}|p{12cm}|l|}
+     \hline
+     \textbf{MSG4 } & Fallo en la conexi\'on de la base de datos\\ \hline
+     \textbf{Tipo } & Error \\ \hline
+     \textbf{Estatus} & En revisi\'on \\ \hline
+     \textbf{Objetivo } & Mostrar al usuario que hay un problema con la conex\'on en la base de datos\\ \hline
+     \textbf{Redacci\'on } & Error en la conexi\'on de la base de datos \\ \hline
+     \textbf{Par\'ametros } & -\\ \hline
+     \textbf{Ejemplo} & Error en la conexi\'on de la base de datos.\\
+     \hline
+   \end{tabular}
+\end{table}
+
+\begin{table}[ht]
+   \begin{tabular}{|p{3cm}|p{12cm}|l|}
+     \hline
+     \textbf{MSG5 } & Limite de lugares permitido\\ \hline
+     \textbf{Tipo } & Error \\ \hline
+     \textbf{Estatus} & En revisi\'on \\ \hline
+     \textbf{Objetivo } & Mostrarle al usuario cuando alcanz\'o el l\'imite de lugares permitidos\\ \hline
+     \textbf{Redacci\'on } & Error, solo puedes seleccionar m\'aximo 5 lugares. \\ \hline
+     \textbf{Par\'ametros } & -\\ \hline
+     \textbf{Ejemplo} & Error, solo puedes seleccionar m\'aximo 5 lugares.\\
+     \hline
+   \end{tabular}
+\end{table}
+
+\begin{table}[ht]
+   \begin{tabular}{|p{3cm}|p{12cm}|l|}
+     \hline
+     \textbf{MSG6 } & M\'inimo de lugares seleccionado\\ \hline
+     \textbf{Tipo } & Error \\ \hline
+     \textbf{Estatus} & En revisi\'on \\ \hline
+     \textbf{Objetivo } & Mostrarle al usuario que no ha seleccionado al menos 1 lugar para su itinerario.\\ \hline
+     \textbf{Redacci\'on } & Error, debes seleccionar al menos 1 lugar. \\ \hline
+     \textbf{Par\'ametros } & -\\ \hline
+     \textbf{Ejemplo} & Error, debes seleccionar al menos 1 lugar.\\
+     \hline
+   \end{tabular}
+\end{table}
+
+\begin{table}[ht]
+   \begin{tabular}{|p{3cm}|p{12cm}|l|}
+     \hline
+     \textbf{MSG7 } & Idioma no disponible\\ \hline
+     \textbf{Tipo } & Aviso \\ \hline
+     \textbf{Estatus} & En revisi\'on \\ \hline
+     \textbf{Objetivo } & Informarle al usuario que el idioma por default de su celular no es compatible con el sistema.\\ \hline
+     \textbf{Redacci\'on } & El idioma de tu equipo no es compatible, el idioma del sistema por default ser\'a ingl\'es. \\ \hline
+     \textbf{Par\'ametros } & -\\ \hline
+     \textbf{Ejemplo} &  El idioma de tu equipo no es compatible, el idioma del sistema por default ser\'a ingl\'es.\\
+     \hline
+   \end{tabular}
+\end{table}
+
+\begin{table}[ht]
+   \begin{tabular}{|p{3cm}|p{12cm}|l|}
+     \hline
+     \textbf{MSG8 } & Fallo en la conex\'on con google\\ \hline
+     \textbf{Tipo } & Aviso \\ \hline
+     \textbf{Estatus} & En revisi\'on \\ \hline
+     \textbf{Objetivo } & Informarle al usuario que hay un prolema con la conexión con google\\ \hline
+     \textbf{Redacci\'on } & No se ha podido establecer conexi\'on. \\ \hline
+     \textbf{Par\'ametros } & -\\ \hline
+     \textbf{Ejemplo} &  No se ha podido establecer conexi\'on.\\
+     \hline
+   \end{tabular}
+\end{table}

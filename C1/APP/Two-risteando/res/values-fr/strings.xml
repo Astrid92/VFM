@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Two-risteando</string>
+
+    <!-- Main view layout -->
+    <string name="main_search_hint">Rechercher la route pour une place dans la ville de Mexico</string>
+    <string name="title_activity_confirm_place">Confirmez Lieu Activité</string>
+    <string name="action_settings">Paramètres</string>
+
+    <!-- Confirm place layout -->
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_recommended_places">Lieux Recommandé activité</string>
+
+</resources>

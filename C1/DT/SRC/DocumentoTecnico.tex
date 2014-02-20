@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{anysize}
+\usepackage[spanish]{babel}
+\usepackage[latin1]{inputenc}
+
+\begin{document}
+
+
+\include{portada} %incluye el archivo portada.tex
+
+    %%%%%%%   INCLUIR ENCABEZADOS EN INDICES Y CAPITULOS   JAJAJA%%%%%%%
+    \pagestyle{headings}
+
+
+    %\setcounter{page}{1} %Comienza en I por default, aquI se puedo modificar\large
+    
+  \large  
+	\newpage
+		\tableofcontents
+		
+
+			%Aqu� empieza Todo
+
+
+	\newpage
+			\include{./Secciones/Introduccion} 	
+	\newpage
+			\include{./Secciones/ModeloDespliegueB} 
+	\newpage
+			\include{./Secciones/ModeloComportamiento} 
+	\newpage
+			\include{./Secciones/Trayectorias}
+	\newpage
+			\include{./Secciones/ModeloDominioProblema}
+	\newpage
+			\include{./Secciones/ModeloInterfaces} 	
+	\newpage
+			\include{./Secciones/ReglasdeNegocio}
+	\newpage
+			\include{./Secciones/Mensajes}
+
+
+    
+	
+	\newpage
+			\include{./Secciones/Glosario}
+
+	 	
+			
+\end{document}

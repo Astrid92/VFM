@@ -1,0 +1,89 @@
+\section{Reglas de negocio}
+
+ \begin{table}[h]
+    \begin{tabular}{|p{3.5cm}|p{10cm}|l|}
+     \hline
+     \textbf{Regla: } & RN1 N\'umero de lugares tur\'isticos en el itinerario\\ \hline
+     \textbf{Tipo: } & Restricci\'on \\ \hline
+     \textbf{Nivel:} & Alto \\ \hline
+     \textbf{Versi\'on: } & 1.0 \\ \hline
+     \textbf{Estado: } & En revisi\'on \\ \hline
+     \textbf{Descripci\'on: } & Solo se podr\'an asignar m\'inimo 1 y m\'aximo 5 lugares tur\'isticos en el itinerario \\ \hline
+     \textbf{Referenciada por: } & - \\
+     \hline
+   \end{tabular}
+\end{table}
+
+ \begin{table}[h]
+    \begin{tabular}{|p{3.5cm}|p{10cm}|l|}
+     \hline
+     \textbf{Regla: } & RN2 Lugares tur\'isticos\\ \hline
+     \textbf{Tipo: } & Restricci\'on \\ \hline
+     \textbf{Nivel:} & Alto \\ \hline
+     \textbf{Versi\'on: } & 1.0 \\ \hline
+     \textbf{Estado: } & En revisi\'on \\ \hline
+     \textbf{Descripci\'on: } & El cat\'alogo de museos solo ser\'a de 30 museos. \\ \hline
+     \textbf{Referenciada por: } & - \\
+     \hline
+   \end{tabular}
+\end{table}
+
+ \begin{table}[h]
+    \begin{tabular}{|p{3.5cm}|p{10cm}|l|}
+     \hline
+     \textbf{Regla: } & RN3 Restaurantes\\ \hline
+     \textbf{Tipo: } & Restricci\'on \\ \hline
+     \textbf{Nivel:} & Alto \\ \hline
+     \textbf{Versi\'on: } & 1.0 \\ \hline
+     \textbf{Estado: } & En revisi\'on \\ \hline
+     \textbf{Descripci\'on: } & Solo se mostrar\'an lugares de comida Vips y MCdonald's. \\ \hline
+     \textbf{Referenciada por: } & - \\
+     \hline
+   \end{tabular}
+\end{table}
+
+ \begin{table}[h]
+    \begin{tabular}{|p{3.5cm}|p{10cm}|l|}
+     \hline
+     \textbf{Regla: } & RN4 Rutas de Transporte\\ \hline
+     \textbf{Tipo: } & Restricci\'on \\ \hline
+     \textbf{Nivel:} & Alto \\ \hline
+     \textbf{Versi\'on: } & 1.0 \\ \hline
+     \textbf{Estado: } & En revisi\'on \\ \hline
+     \textbf{Descripci\'on: } & Solo se usar\'a el Metro y el Metrobus como medio de transporte para
+     acercar al usuario a su destino base. \\ \hline
+     \textbf{Referenciada por: } & - \\
+     \hline
+   \end{tabular}
+   
+\begin{table}[h]
+    \begin{tabular}{|p{3.5cm}|p{10cm}|l|}
+     \hline
+     \textbf{Regla: } & RN5 Trazado de la ruta\\ \hline
+     \textbf{Tipo: } &  Derivaci\'on\\ \hline
+     \textbf{Nivel:} & Alto \\ \hline
+     \textbf{Versi\'on: } & 1.0 \\ \hline
+     \textbf{Estado: } & En revisi\'on \\ \hline
+     \textbf{Descripci\'on: } & La ruta sera trazada por el sistema utilizando un 
+     grafo recorriendo el menor n\'umero de estaciones en un solo sistema ya sea metro o 
+     metrobus sin pasar por el mismo nodo m\'as de una vez. Como se muestra en la figura \_\_. 
+     Se trazar\'a la ruta solamente desde el origen  hasta el destino base.\\ \hline 
+     \textbf{Referenciada por: } & - \\
+     \hline
+   \end{tabular}
+\end{table}
+
+\begin{table}[h]
+    \begin{tabular}{|p{3.5cm}|p{10cm}|l|}
+     \hline
+     \textbf{Regla: } & RN6 C\'alculo de presupuesto\\ \hline
+     \textbf{Tipo: } &  Restricci\'on\\ \hline
+     \textbf{Nivel:} & Alto \\ \hline
+     \textbf{Versi\'on: } & 1.0 \\ \hline
+     \textbf{Estado: } & En revisi\'on \\ \hline
+     \textbf{Descripci\'on: } & El presupuesto para el itinerario a seguir se calcular\'a de la siguiente
+     manera: \\ \hline 
+     \textbf{Referenciada por: } & - \\
+     \hline
+   \end{tabular}
+\end{table}

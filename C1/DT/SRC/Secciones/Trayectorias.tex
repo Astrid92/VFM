@@ -1,0 +1,462 @@
+\subsection{Trayectorias}
+  \subsubsection{CU1 Desplegar informaci\'on}
+  \textbf{Resumen}
+  \\
+  \\
+    El actor podr\'a visualizar la informaci\'on del itinerario elegido, esto es el mapa del transporte elegido, la descripci\'on de manera escrita
+    de la ruta a seguir en el medio de transporte, el c\'alculo del presupuesto si así lo requiere y un mapa de la ciudad con los lugares marcados
+    de su itinerario para poder guiarse y llegar a pie.
+  \\
+  \\
+  
+  \textbf{Descripci\'on}
+  \\
+  \\
+  \begin{tabular}{|p{3.5cm}|p{12cm}|l|}
+     \hline
+     \textbf{Caso de Uso:} & CU1 Desplegar informaci\'on \\ \hline
+     \textbf{Actor:} & Turista\\ \hline
+     \textbf{Prop\'osito:} & Visualizar la información del itinerario elegido\\ \hline
+     \textbf{Entradas:} & -\\ \hline
+     \textbf{Salidas: } & Por default muestra el mapa de la ruta del transporte.\\ \hline
+     \textbf{Precondiciones: } & Un itinerario establecido.\\ \hline
+     \textbf{Postcondiciones: } & - \\ \hline
+     \textbf{Errores: } & -\\ \hline
+     \textbf{Tipo:} & Prinario.\\ \hline
+   \end{tabular}
+   
+   \subsubsection{Trayectoria Principal}
+      \begin{enumerate}
+	\item El \textbf{Actor} ingresa en la pantalla [VCU1.1].
+	\item El \textbf{Sistema} carga la primer pestaña de mostrar el mapa
+	\item El \textbf{Sistema} muestra la pantalla de despliegue de informaci\'on con las siguientes opciones:
+	\begin{itemize}
+	 \item Calcular ruta.[PE CU1.1]
+	 \item Mostrar informaci\'on del viaje. [PE CU1.2]
+	 \item Mostrar mapa de la ciudad. [PE CU1.3]
+	\end{itemize}
+      \end{enumerate}	   
+      --Fin del caso de uso.
+      
+\newpage
+  \subsubsection{CU1.1 Calcular ruta}
+  \textbf{Resumen}
+  \\
+  \\
+    El sistema toma las coordenadas del turista y del destino base, por medio del GPS para calcular la ruta que llevar\'a al(los) turista(s)
+    a la estaci\'on m\'as cercana del primer lugar de su itinerario, utilizando ya sea el metro o metrobus, dependindo de la elecci\'on del turista.
+  \\
+  \\
+  
+  \textbf{Descripci\'on}
+  \\
+  \\
+  \begin{tabular}{|p{3.5cm}|p{12cm}|l|}
+     \hline
+     \textbf{Caso de Uso:} & CU1.1 Calcular ruta \\ \hline
+     \textbf{Actor:} & Turista\\ \hline
+     \textbf{Prop\'osito:} & Calcular la ruta para llegar al destino base.\\ \hline
+     \textbf{Entradas:} & Las coordenadas del destino base, ubicaci\'on del turista, mediante el GPS
+     y el medio de transporte a utilizar, seleccion\'andolo en un combobox\\ \hline
+     \textbf{Salidas: } & El mapa del transporte seleccionado, con la ruta dibujada, que seguir\'a el
+     usuario para llegar al destino base.\\ \hline
+     \textbf{Precondiciones: } & El GPS del celular est\'a activado; La conexi\'on internet est\'a funcionando. Debe existir al menos un lugar destino y un
+     cat\'alogo de transportes a utilizar.\\ \hline
+     \textbf{Postcondiciones: } & - \\ \hline
+     \textbf{Errores: } & [MSG4] Fallo en la conexi\'on de la Base de Datos. [MSG1] Informaci\'on incompleta.\\ \hline
+     \textbf{Tipo:} & Secundario.\\ \hline
+   \end{tabular}
+   
+   \subsubsection{Trayectoria Principal}
+      \begin{enumerate}
+	\item El \textbf{Actor} ingresa en la pantalla [VCU2].
+	\item El \textbf{Actor} selecciona al menos un lugar a visitar.
+	\item El \textbf{Actor} selecciona del combobox el medio de transporte que utilizar\'a.
+	\item El \textbf{Actor} pulsa el bot\'on \textbf{Siguiente}.
+	\item El \textbf{Sistema} valida que exista por lo menos un lugar a visitar.[Trayectoria Alternativa A]
+	\item El \textbf{Sistema} calcula la ruta seg\'un el transporte seleccionado y el detino base. [Trayectoria Alternativa B]
+	\item El \textbf{Sistema} muestra el mapa del transporte elegido, con la ruta a seguir para llegar
+	a la estaci\'on m\'as cercana del destino base de la vista [VCU1.1].
+      \end{enumerate}	   
+      --Fin del caso de uso.
+    
+    \subsubsection{Trayectoria Alternativa A}
+	\textbf{Condici\'on: } El turista no seleccion\'o por lo menos un lugar a visitar.
+	 \begin{enumerate}
+	      \item El \textbf{Actor} pulsa en el bot\'on \textbf{Siguiente}.
+	      \item El \textbf{Sistema} valida que exista por lo menos un lugar a visitar.
+	      \item El \textbf{Sistema} muestra el mensaje de error [MSG1] Informaci\'on incompleta,
+	      mostrando el texto ``Falta llenar el campo Itinerario. Es obligatorio.''.
+	      \item El \textbf{Actor} pulsa el bot\'on \textbf{Aceptar} del mensaje.
+	      \item El \textbf{Sistema} regresa al paso 2 de la trayectoria principal.
+	  \end{enumerate}
+    --Fin de la trayectoria.
+    
+    \subsubsection{Trayectoria Alternativa B}
+	\textbf{Condici\'on: } El sistema tuvo alg\'un problema con la conexi\'on de la base de datos.
+	 \begin{enumerate}
+	      \item El \textbf{Actor} hace clic en el bot\'on \textbf{Siguiente}.
+	      \item El \textbf{Sistema} detecta un error en la conexi\'on de la base de datos.
+	      \item El \textbf{Sistema} muestra el mensaje de error [MSG4] ``Error en la conexi\'on de la base de datos.''.
+	      \item El \textbf{Actor} pulsa el bot\'on \textbf{Aceptar} del mensaje.
+	      \item El \textbf{Sistema} regresa al paso 1 de la trayectoria principal.
+	  \end{enumerate}
+    --Fin de la trayectoria.
+  
+\newpage
+    \subsubsection{CU1.2 Mostrar informaci\'on del viaje}
+  \textbf{Resumen}
+  \\
+  \\
+      El sistema calcular\'a el monto aproximado que se requiere para transportarse y visitar cada uno de los lugares en el itinerario
+      selecionado, as\'i como mostrar de forma escrita la ruta que seguir\'a el turista en un medio de transporte seleccionado.
+  \\
+  \\
+  
+  \textbf{Descripci\'on}
+  \\ 
+  \\
+  \begin{tabular}{|p{3.5cm}|p{12cm}|l|}
+     \hline
+     \textbf{Caso de Uso:} & CU1.2 Mostrar informaci\'on del viaje \\ \hline
+     \textbf{Actor:} & Turista\\ \hline
+     \textbf{Prop\'osito:} & Calcular el presupuesto del itinerario y mostrar la ruta de forma escrita.\\ \hline
+     \textbf{Entradas:} & El n\'umero de personas ingresado en un campo de texto.\\ \hline
+     \textbf{Salidas: } & El presupuesto total aproximado y la ruta de manera escrita.\\ \hline
+     \textbf{Precondiciones: } & Un itinerario con los lugares a visitar (museos o restaurantes), la lista de precios de los lugares, así
+     como del transporte a utilizar. \\ \hline
+     \textbf{Postcondiciones: } & - \\ \hline
+     \textbf{Errores: } & [MSG4] Fallo en la conexi\'on de la Base de Datos. [MSG1] Informaci\'on incompleta.\\ \hline
+     \textbf{Tipo:} & Secundario.\\ \hline
+   \end{tabular}
+   
+   \subsubsection{Trayectoria Principal}
+      \begin{enumerate}
+	\item El \textbf{Actor} ingresa en la pantalla [VCU1.2].
+	\item El \textbf{Sistema} despliega la ruta a seguir de forma escrita.
+	\item El \textbf{Actor} ingresa el n\'umero de personas para realizar el c\'alculo
+	del presupuesto del itinerario elegido.
+	\item El \textbf{Actor} pulsa el bot\'on \textbf{Calcular presupuesto}.[Trayectoria Alternativa A]
+	\item El \textbf{Sistema} realiza el calculo del presupuesto para el n\'umero de personas
+	ingresado.[Trayectoria Alternativa B]
+	\item El \textbf{Sistema} muestra el presupuesto total y por persona junto a la descripci\'on
+	de la ruta del itinerario.
+
+      \end{enumerate}	   
+      --Fin del caso de uso.
+    
+    \subsubsection{Trayectoria Alternativa A}
+	\textbf{Condici\'on: } El turista no ingres\'o el n\'umero de personas en el campo de texto
+	para calcular el presupuesto.
+	 \begin{enumerate}
+	      \item El \textbf{Actor} pulsa en el bot\'on \textbf{Calcular presupuesto}.
+	      \item El \textbf{Sistema} valida que se haya ingresado el n\'umero de personas para el presupuesto.
+	      \item El \textbf{Sistema} muestra el mensaje de error [MSG1] Informaci\'on incompleta,
+	      mostrando el texto ``Falta llenar el campo N\'umero de personas. Es obligatorio.''.
+	      \item El \textbf{Actor} pulsa el bot\'on \textbf{Aceptar} del mensaje.
+	      \item El \textbf{Sistema} regresa al paso 2 de la trayectoria principal.
+	  \end{enumerate}
+    --Fin de la trayectoria.
+    
+    \subsubsection{Trayectoria Alternativa B}
+	\textbf{Condici\'on: } El sistema tuvo alg\'un problema con la conexi\'on de la base de datos.
+	 \begin{enumerate}
+	      \item El \textbf{Actor} hace clic en el bot\'on \textbf{Calcular presupuesto}.
+	      \item El \textbf{Sistema} detecta un error en la conexi\'on de la base de datos.
+	      \item El \textbf{Sistema} muestra el mensaje de error [MSG4] ``Error en la conexi\'on de la base de datos.''.
+	      \item El \textbf{Actor} pulsa el bot\'on \textbf{Aceptar} del mensaje.
+	      \item El \textbf{Sistema} regresa al paso 1 de la trayectoria principal.
+	  \end{enumerate}
+    --Fin de la trayectoria.
+  
+ \newpage
+    \subsubsection{CU1.3 Mostrar mapa de la ciudad}
+  \textbf{Resumen}
+  \\
+  \\
+      El turista podr\'a visualizar el mapa de la ciudad, con los lugares de su itinerario marcados para poder tener una mejor
+      referncia de como llegar y que calles se encuentran a su alrededor.
+  \\
+  \\
+  
+  \textbf{Descripci\'on}
+  \\ 
+  \\
+  \begin{tabular}{|p{3.5cm}|p{12cm}|l|}
+     \hline
+     \textbf{Caso de Uso:} & CU1.3 Mostrar mapa de la ciudad \\ \hline
+     \textbf{Actor:} & Turista\\ \hline
+     \textbf{Prop\'osito:} & Visualizar el mapa de la ciudad con los lugares del itinerario.\\ \hline
+     \textbf{Entradas:} & -\\ \hline
+     \textbf{Salidas: } & El mapa con los lugares marcados\\ \hline
+     \textbf{Precondiciones: } & Un itinerario previamente hecho. \\ \hline
+     \textbf{Postcondiciones: } & - \\ \hline
+     \textbf{Errores: } & [MSG8] Fallo en la conex\'on con google\\ \hline
+     \textbf{Tipo:} & Secundario.\\ \hline
+   \end{tabular}
+   
+    \subsubsection{Trayectoria Principal}
+      \begin{enumerate}
+	\item El \textbf{Actor} ingresa en la pantalla [VCU1.3] para visualizar el mapa de google.
+	\item El \textbf{Sistema} se conecta con la API de google para mostrar el mapa.[Trayectoria Aleternativa A]
+	\item El \textbf{Sistema} manda las coordenadas de los lugares para ubicarlas en el mapa.
+	\item El \textbf{Sistema} despliega el mapa de la ciudad con los lugares ubicados.
+      \end{enumerate}	   
+      --Fin del caso de uso.
+      \subsubsection{Trayectoria Alternativa A}
+	\textbf{Condici\'on: } El sistema tuvo alg\'un problema con la conexi\'on de google.
+	 \begin{enumerate}
+	      \item El \textbf{Actor} hace clic en el bot\'on \textbf{Siguiente}.
+	      \item El \textbf{Sistema} detecta un error en la conexi\'on de la base de datos.
+	      \item El \textbf{Sistema} muestra el mensaje de error [MSG8] ``No se ha podido establecer conexi\'on.''.
+	      \item El \textbf{Actor} pulsa el bot\'on \textbf{Aceptar} del mensaje.
+	      \item El \textbf{Sistema} regresa al paso 1 de la trayectoria principal.
+	  \end{enumerate}
+    --Fin de la trayectoria.
+    
+    
+  \newpage
+  \subsubsection{CU2 Administrar itinerario}
+  \textbf{Resumen}
+  \\
+  \\
+  Le permitir\'a al usuario establecer el destino base y un radio m\'aximo de b\'usqueda de lugares cercanos
+  para comenzar a crear su itinerario, a partir del destino base ingresado.
+  \\
+  \\
+  
+  \textbf{Descripci\'on}
+  \\
+  \\
+  \begin{tabular}{|p{3.5cm}|p{12cm}|l|}
+     \hline
+     \textbf{Caso de Uso:} & CU2 Administrar itinerario \\ \hline
+     \textbf{Actor:} & Turista\\ \hline
+     \textbf{Prop\'osito:} & Establecer el destino base y el radio m\'aximo de b\'usqueda. \\ \hline
+     \textbf{Entradas:} &  El turista ingresar\'a en un campo de texto el destino base, y en un numpicker
+     el radio \'aximo para buscar los dem\'as lugares.\\ \hline
+     \textbf{Salidas: } & Lista de los lugares posibles a visitar.\\ \hline
+     \textbf{Precondiciones: } & Debe existir un cat\'alogo de lugares en la base de datos.\\ \hline
+     \textbf{Postcondiciones: } & - \\ \hline
+     \textbf{Errores: } & [MSG4] Fallo en la conexi\'on de la Base de Datos. [MSG1] Informaci\'on incompleta. [MSG7] Idioma no disponible.\\ \hline
+     \textbf{Tipo:} & Primario.\\ \hline
+   \end{tabular}
+   
+   \subsubsection{Trayectoria Principal}
+      \begin{enumerate}
+	\item El \textbf{Actor} ingresa en la pantalla [Vista Principal] para acceder al sistema.
+	\item El \textbf{Sistema} valida el idioma del dispositivo m\'ovil respecto a la regla de negocio.
+	[RN7].[Trayectoria Alternativa A]
+	\item El \textbf{Actor} escribe en el campo de texto el destino base.
+	\item El \textbf{Actor} establece un radio m\'aximo de b\'usqueda de lugares al rededor del destino base.
+	\item El \textbf{Actor} pulsa el bot\'on de \textbf{Siguiente}.
+	\item El \textbf{Sistema} valida la informaci\'on ingresada al sistema[Trayectoria alternativa B]
+	\item El \textbf{Sistema} busca los lugares m\'as cercanos dependiendo del radio establecido. [Trayectoria Alternativa C]
+      \end{enumerate}	   
+      --Fin del caso de uso.
+    
+     \subsubsection{Trayectoria Alternativa A}
+	\textbf{Condici\'on: } El sistema no encuentra el idioma del dispositivo m\'ovil en los disponibles para el sistema.
+	 \begin{enumerate}
+	      \item El \textbf{Actor} ingrsa a la pantalla [Vista Principal].
+	      \item El \textbf{Sistema} valida el idioma del dispositivo m\'ovil.
+	      \item El \textbf{Sistema} muestra el mensaje de error [MSG7] Idioma disponible.
+	      \item El \textbf{Actor} pulsa el bot\'on \textbf{Aceptar} del mensaje.
+	      \item El \textbf{Sistema} establece el idioma ingl\'es por default.
+	      \item El \textbf{Sistema} regresa al paso 1 de la trayectoria principal.
+	  \end{enumerate}
+    --Fin de la trayectoria.
+    
+    \subsubsection{Trayectoria Alternativa B}
+	\textbf{Condici\'on: } El turista no escribi\'o el destino base para realizar la b\'usqueda de los dem\'as lugares.
+	 \begin{enumerate}
+	      \item El \textbf{Actor} pulsa en el bot\'on \textbf{Siguiente}.
+	      \item El \textbf{Sistema} valida que est\'e escrito el lugar destino en el campo de texto.
+	      \item El \textbf{Sistema} muestra el mensaje de error [MSG1] Informaci\'on incompleta,
+	      mostrando el texto ``Falta llenar el campo N\'umero de personas. Es obligatorio.''.
+	      \item El \textbf{Actor} pulsa el bot\'on \textbf{Aceptar} del mensaje.
+	      \item El \textbf{Sistema} regresa al paso 2 de la trayectoria principal.
+	  \end{enumerate}
+    --Fin de la trayectoria.
+    
+    \subsubsection{Trayectoria Alternativa C}
+	\textbf{Condici\'on: } El sistema tuvo alg\'un problema con la conexi\'on de la base de datos.
+	 \begin{enumerate}
+	      \item El \textbf{Actor} hace clic en el bot\'on \textbf{Siguiente}.
+	      \item El \textbf{Sistema} detecta un error en la conexi\'on de la base de datos.
+	      \item El \textbf{Sistema} muestra el mensaje de error [MSG4] ``Error en la conexi\'on de la base de datos.''.
+	      \item El \textbf{Actor} pulsa el bot\'on \textbf{Aceptar} del mensaje.
+	      \item El \textbf{Sistema} regresa al paso 1 de la trayectoria principal.
+	  \end{enumerate}
+    --Fin de la trayectoria.
+  
+  \newpage
+  \subsubsection{CU2.1 Agregar un lugar}
+  \textbf{Resumen}
+  \\
+  \\
+  Le permitir\'a al turista agregar a su itinerario un lugar tur\'istico o restaurante. El cual puedr\'a ser el punto
+  de inicio para calcular la ruta de llegada.
+  \\
+  \\
+  
+  \textbf{Descripci\'on}
+  \\
+  \\
+  \begin{tabular}{|p{3.5cm}|p{12cm}|l|}
+     \hline
+     \textbf{Caso de Uso:} & CU2.1 Agregar un lugar \\ \hline
+     \textbf{Actor:} & Turista\\ \hline
+     \textbf{Prop\'osito:} & Seleccionar lugares tur\'isticos o restaurante a un itinerario. \\ \hline
+     \textbf{Entradas:} & Mediante un \textbf{checkbox} se crear\'a la lista de los lugares tur\'isticos
+     y/o restaurantes a visitar por el turista.\\ \hline
+     \textbf{Salidas: } & Listado de los lugares seleccionados. \\ \hline
+     \textbf{Precondiciones: } & Debe existir el cat\'alogo de lugares tur\'isticos y restaurantes.\\ \hline
+     \textbf{Postcondiciones: } & - \\ \hline
+     \textbf{Errores: } & [MSG4] Fallo en la conexi\'on de la Base de Datos.,  [MSG5] Limite de lugares permitido. y [MSG6] M\'inimo de lugares seleccionado \\ \hline
+     \textbf{Tipo:} & Segundario.\\ \hline
+   \end{tabular}
+   
+   \subsubsection{Trayectoria Principal}
+      \begin{enumerate}
+	\item El \textbf{Actor} ingresa en la pantalla [VCU2.1].[Trayectoria Alternativa A]
+	\item El \textbf{Sistema} se conecta a la base de datos. [Trayectoria Alternativa B]
+	\item El \textbf{Sistema} muestra una lista de los lugares posibles a seleccionar.
+	\item El \textbf{Actor} selecciona 5 lugares que desee visitar. [PE CU2.2] [Trayectoria Alternativa C]
+	\item El \textbf{Actor} pulsa el bot\'on \textbf{Siguiente}.
+	\item El \textbf{Sistema} muestra el mensaje [MSG3] Confirmaci\'on ``?`Seguro que desea calcular la ruta?''.[Trayectoria Alternativa D]
+	\item El \textbf{Actor} pulsa el bot\'on \textbf{Aceptar} para confirmar su decisi\'on.
+	\item El \textbf{Sistema} muestra la pantalla [VCU1].
+      \end{enumerate}	   
+      --Fin del caso de uso.
+      
+    \subsubsection{Trayectoria Alternativa A}
+	\textbf{Condici\'on: } El turista decidi\'o cambiar de lugar tur\'istico base.
+	 \begin{enumerate}
+	      \item El \textbf{Actor} hace clic en el bot\'on \textbf{Atr\'as}.
+	      \item El \textbf{Sistema} regresa a va pantalla [Vista principal del sistema].
+	  \end{enumerate}
+    --Fin del caso de uso. 
+    
+    \subsubsection{Trayectoria Alternativa B}
+	\textbf{Condici\'on: } El sistema tuvo alg\'un problema con la conexi\'on de la base de datos.
+	 \begin{enumerate}
+	      \item El \textbf{Actor} hace clic en el bot\'on \textbf{Siguiente}.
+	      \item El \textbf{Sistema} detecta un error en la conexi\'on de la base de datos.
+	      \item El \textbf{Sistema} muestra el mensaje de error [MSG4] ``Error en la conexi\'on de la base de datos.''.
+	      \item El \textbf{Actor} pulsa el bot\'on \textbf{Aceptar} del mensaje.
+	      \item El \textbf{Sistema} regresa al paso 1 de la trayectoria principal.
+	  \end{enumerate}
+    --Fin de la trayectoria.
+    
+    \subsubsection{Trayectoria Alternativa C}
+	\textbf{Condici\'on: } El actor no seleccion\'o alg\'un lugar para visitar.
+	 \begin{enumerate}
+	      \item El \textbf{Actor} pulsa el bot\'on \textbf{Siguiente}.
+	      \item El \textbf{Sistema} muestra el mensaje de error [MSG6] ``Error, debes seleccionar al menos 1 lugar.''.
+	      \item El \textbf{Actor} pulsa el bot\'on \textbf{Aceptar}.
+	      \item El \textbf{Sistema} regresa al paso 4 de la trayectoria principal.
+	  \end{enumerate}
+    --Fin de la trayectoria.
+    
+        \subsubsection{Trayectoria Alternativa D}
+	\textbf{Condici\'on: } El actor decidi\'o cambiar su itinerario.
+	 \begin{enumerate}
+	      \item El \textbf{Actor} hace clic en el bot\'on \textbf{Cancelar}.
+	      \item El \textbf{Sistema} regresa al paso n\'umero 4 de la trayectoria principal.
+	  \end{enumerate}
+    --Fin de la trayectoria.
+  
+ \newpage
+ \subsubsection{CU2.2 Eliminar un lugar}
+  \textbf{Resumen}
+  \\
+  \\
+  El turista podr\'a decidir quitar un lugar del itinerario que ha creado.
+  \\
+  \\
+  
+  \textbf{Descripci\'on}
+  \\
+  \\
+  \begin{tabular}{|p{3.5cm}|p{12cm}|l|}
+     \hline
+     \textbf{Caso de Uso:} & CU2.2 Eliminar un lugar \\ \hline
+     \textbf{Actor:} & Turista\\ \hline
+     \textbf{Prop\'osito:} & Quitar lugares tur\'isticos del itinerario. \\ \hline
+     \textbf{Entradas:} & Un itinerario con por lo menos 1 lugar tur\'istico \\ \hline
+     \textbf{Salidas: } & Una lista con menor n\'umero de lugares tur\'isticos en el itinerario. \\ \hline
+     \textbf{Precondiciones: } & Debe haberse elegido por lo menos un lugar tur\'istico. \\ \hline
+     \textbf{Postcondiciones: } & - \\ \hline
+     \textbf{Errores: } & - \\ \hline
+     \textbf{Tipo:} & Secundario.\\ \hline
+   \end{tabular}
+   
+   \subsubsection{Trayectoria Principal}
+      \begin{enumerate}
+	\item El \textbf{Actor} ingresa en la pantalla [VCU2.2].[Trayectoria Alternativa A]
+	\item El \textbf{Sistema} muestra la lista de los lugares seleccionados.
+	\item El \textbf{Actor} pulsa el bot\'on con una \textbf{X} para quitar un lugar tur\'istico.
+	\item El \textbf{Sistema} muestra un lugar tur\'istico menos en el itinerario.
+      \end{enumerate}	   
+      --Fin del caso de uso.
+      
+    \subsubsection{Trayectoria Alternativa A}
+	\textbf{Condici\'on: } El turista decidi\'o cambiar de lugar tur\'istico base.
+	 \begin{enumerate}
+	      \item El \textbf{Actor} hace clic en el bot\'on \textbf{Atr\'as}.
+	      \item El \textbf{Sistema} regresa a va pantalla [Vista Principal].
+	  \end{enumerate}
+    --Fin del caso de uso.
+
+\newpage
+  
+  \subsubsection{CU3 Cambiar idioma}
+  \textbf{Resumen}
+  \\
+  \\
+	La informaci\'on contenida en la aplicaci\'on ser\'a mostrada al usuario en uno de los 3 idiomas disponibles:
+	\begin{enumerate}
+	  \item Espa\~nol
+	  \item Ingles
+	  \item Frances
+	\end{enumerate}
+  
+  
+  \textbf{Descripci\'on}
+  \\
+  \\
+  \begin{tabular}{|p{3.5cm}|p{12cm}|l|}
+     \hline
+     \textbf{Caso de Uso:} & CU3 Cambiar idioma \\ \hline
+     \textbf{Actor:} & -\\ \hline
+     \textbf{Prop\'osito:} & Mostrar la informaci\'on de la aplicaci\'on como m\'as le agrade al usuario. \\ \hline
+     \textbf{Entradas:} & El el idioma seleccionado por el usuario. \\ \hline
+     \textbf{Salidas: } & El texto de informaci\'on de la aplicaci\'on se mostrar\'a en el idioma selccionado. \\ \hline
+     \textbf{Precondiciones: } &  -\\ \hline
+     \textbf{Postcondiciones: } & - \\ \hline
+     \textbf{Errores: } & [MSG4] Fallo en la conexi\'on de la Base de Datos.\\ \hline
+     \textbf{Tipo:} & Primario.\\ \hline
+   \end{tabular}
+   
+   \subsubsection{Trayectoria Principal}
+      \begin{enumerate}
+	\item El \textbf{Actor} ingresa en la pantalla [VCU3].
+	\item El \textbf{Actor} selecciona el idioma de su preferencia.
+	\item El \textbf{Actor} pulsa el bot\'on \textbf{Cambiar idioma}{Trayectoria Aleternativa A}
+	\item El \textbf{Sistema} configura el idioma seleccionado por el usuario.
+
+      \end{enumerate}	   
+      --Fin del caso de uso.
+      
+    \subsubsection{Trayectoria Alternativa A}
+	\textbf{Condici\'on: } El sistema tuvo alg\'un problema con la conexi\'on de la base de datos.
+	 \begin{enumerate}
+	      \item El \textbf{Actor} hace clic en el bot\'on \textbf{Cambiar idioma}.
+	      \item El \textbf{Sistema} detecta un error en la conexi\'on de la base de datos.
+	      \item El \textbf{Sistema} muestra el mensaje de error [MSG4] ``Error en la conexi\'on de la base de datos.''.
+	      \item El \textbf{Actor} pulsa el bot\'on \textbf{Aceptar} del mensaje.
+	      \item El \textbf{Sistema} regresa al paso 1 de la trayectoria principal.
+	  \end{enumerate}
+    --Fin de la trayectoria.
+  
